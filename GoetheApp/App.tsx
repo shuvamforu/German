@@ -11,9 +11,16 @@ import { ModelSetsScreen } from './screens/ModelSetsScreen';
 import { ActiveTestScreen } from './screens/ActiveTestScreen';
 import { OnboardingScreen } from './screens/OnboardingScreen';
 import { useAppStore } from './store/useAppStore';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function App() {
-  const { currentScreen, navigate, language } = useAppStore();
+  const { currentScreen, navigate, language } = useAppStore(
+    useShallow((state) => ({
+      currentScreen: state.currentScreen,
+      navigate: state.navigate,
+      language: state.language,
+    }))
+  );
   const isNepali = language === 'nepali';
 
   return (

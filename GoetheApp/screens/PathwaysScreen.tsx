@@ -4,7 +4,7 @@ import { useAppStore } from '../store/useAppStore';
 import { mockPathways, Pathway } from '../data/mockPathways';
 
 export const PathwaysScreen: React.FC = () => {
-  const { language } = useAppStore();
+  const language = useAppStore((state) => state.language);
   const isNepali = language === 'nepali';
 
   const renderPathwayItem = ({ item }: { item: Pathway }) => (

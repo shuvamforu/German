@@ -5,9 +5,16 @@ import { useAppStore } from '../store/useAppStore';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { RewardModal } from '../components/RewardModal';
 import { mockLessons } from '../data/mockLessons';
+import { useShallow } from 'zustand/react/shallow';
 
 export const LessonScreen: React.FC = () => {
-  const { language, navigate, addXp } = useAppStore();
+  const { language, navigate, addXp } = useAppStore(
+    useShallow((state) => ({
+      language: state.language,
+      navigate: state.navigate,
+      addXp: state.addXp,
+    }))
+  );
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
   const [showReward, setShowReward] = useState(false);
   const isNepali = language === 'nepali';

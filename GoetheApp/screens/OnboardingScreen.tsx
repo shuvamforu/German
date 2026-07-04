@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Pressable, ScrollView, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
+import { useShallow } from 'zustand/react/shallow';
 
 const { width } = Dimensions.get('window');
 
@@ -59,7 +60,12 @@ const onboardingSlides = [
 ];
 
 export const OnboardingScreen: React.FC = () => {
-  const { language, completeOnboarding } = useAppStore();
+  const { language, completeOnboarding } = useAppStore(
+    useShallow((state) => ({
+      language: state.language,
+      completeOnboarding: state.completeOnboarding,
+    }))
+  );
   const isNepali = language === 'nepali';
   const [currentIndex, setCurrentIndex] = useState(0);
 

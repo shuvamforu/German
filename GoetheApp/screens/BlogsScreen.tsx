@@ -3,9 +3,8 @@ import { StyleSheet, Text, View, FlatList, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
 import { mockBlogs, Blog } from '../data/mockBlogs';
-
 export const BlogsScreen: React.FC = () => {
-  const { language } = useAppStore();
+  const language = useAppStore((state) => state.language);
   const isNepali = language === 'nepali';
 
   const renderBlogItem = ({ item }: { item: Blog }) => (
