@@ -7,6 +7,8 @@ import { LessonScreen } from './screens/LessonScreen';
 import { ServersScreen } from './screens/ServersScreen';
 import { PathwaysScreen } from './screens/PathwaysScreen';
 import { BlogsScreen } from './screens/BlogsScreen';
+import { ModelSetsScreen } from './screens/ModelSetsScreen';
+import { ActiveTestScreen } from './screens/ActiveTestScreen';
 import { useAppStore } from './store/useAppStore';
 
 export default function App() {
@@ -22,9 +24,11 @@ export default function App() {
         {currentScreen === 'servers' && <ServersScreen />}
         {currentScreen === 'pathways' && <PathwaysScreen />}
         {currentScreen === 'blogs' && <BlogsScreen />}
+        {currentScreen === 'modelsets' && <ModelSetsScreen />}
+        {currentScreen === 'activetest' && <ActiveTestScreen />}
 
         {/* Simple Bottom Navigation */}
-        {currentScreen !== 'lesson' && (
+        {currentScreen !== 'lesson' && currentScreen !== 'activetest' && (
           <View style={styles.bottomNav}>
             <Pressable onPress={() => navigate('home')} style={styles.navTab}>
               <Ionicons name="home" size={24} color={currentScreen === 'home' ? '#2E7D32' : '#7F8C8D'} />
@@ -42,6 +46,12 @@ export default function App() {
               <Ionicons name="book" size={24} color={currentScreen === 'blogs' ? '#2E7D32' : '#7F8C8D'} />
               <Text style={[styles.navText, currentScreen === 'blogs' && styles.navTextActive]}>
                 {isNepali ? 'ब्लग' : 'Blogs'}
+              </Text>
+            </Pressable>
+            <Pressable onPress={() => navigate('modelsets')} style={styles.navTab}>
+              <Ionicons name="document-text" size={24} color={currentScreen === 'modelsets' ? '#2E7D32' : '#7F8C8D'} />
+              <Text style={[styles.navText, currentScreen === 'modelsets' && styles.navTextActive]}>
+                {isNepali ? 'परीक्षा' : 'Tests'}
               </Text>
             </Pressable>
             <Pressable onPress={() => navigate('servers')} style={styles.navTab}>
