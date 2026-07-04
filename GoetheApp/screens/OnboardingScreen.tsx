@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Pressable, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Pressable, ScrollView, Dimensions, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
 
@@ -63,7 +63,7 @@ export const OnboardingScreen: React.FC = () => {
   const isNepali = language === 'nepali';
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleScroll = (event: any) => {
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const slideIndex = Math.round(event.nativeEvent.contentOffset.x / width);
     setCurrentIndex(slideIndex);
   };
