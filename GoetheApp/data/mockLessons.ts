@@ -1,6 +1,6 @@
 export type Lesson = {
   id: number;
-  level: 'A1' | 'A2' | 'B1';
+  level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
   german: string;
   nepali: string;
   english: string;
@@ -66,4 +66,15 @@ export const mockLessons: Lesson[] = [
     nepaliSentence: 'होइन, धन्यवाद।',
     englishSentence: 'No, thank you.',
   },
+  {
+    id: 6,
+    level: 'C2',
+    german: 'Außerdem',
+    nepali: 'यसबाहेक',
+    english: 'Furthermore',
+    type: 'grammar',
+    germanSentence: 'Er ist klug, und außerdem ist er fleißig.',
+    nepaliSentence: 'उनी चतुर छन्, र यसबाहेक उनी मेहेनती पनि छन्।',
+    englishSentence: 'He is smart, and furthermore, he is hardworking.',
+  }
 ];

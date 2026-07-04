@@ -5,10 +5,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { HomeScreen } from './screens/HomeScreen';
 import { LessonScreen } from './screens/LessonScreen';
 import { ServersScreen } from './screens/ServersScreen';
+import { PathwaysScreen } from './screens/PathwaysScreen';
+import { BlogsScreen } from './screens/BlogsScreen';
 import { useAppStore } from './store/useAppStore';
 
 export default function App() {
-  const { currentScreen, navigate } = useAppStore();
+  const { currentScreen, navigate, language } = useAppStore();
+  const isNepali = language === 'nepali';
 
   return (
     <GestureHandlerRootView style={styles.container}>
@@ -17,17 +20,35 @@ export default function App() {
         {currentScreen === 'home' && <HomeScreen />}
         {currentScreen === 'lesson' && <LessonScreen />}
         {currentScreen === 'servers' && <ServersScreen />}
+        {currentScreen === 'pathways' && <PathwaysScreen />}
+        {currentScreen === 'blogs' && <BlogsScreen />}
 
         {/* Simple Bottom Navigation */}
         {currentScreen !== 'lesson' && (
           <View style={styles.bottomNav}>
             <Pressable onPress={() => navigate('home')} style={styles.navTab}>
               <Ionicons name="home" size={24} color={currentScreen === 'home' ? '#2E7D32' : '#7F8C8D'} />
-              <Text style={[styles.navText, currentScreen === 'home' && styles.navTextActive]}>Home</Text>
+              <Text style={[styles.navText, currentScreen === 'home' && styles.navTextActive]}>
+                {isNepali ? 'गृह' : 'Home'}
+              </Text>
+            </Pressable>
+            <Pressable onPress={() => navigate('pathways')} style={styles.navTab}>
+              <Ionicons name="map" size={24} color={currentScreen === 'pathways' ? '#2E7D32' : '#7F8C8D'} />
+              <Text style={[styles.navText, currentScreen === 'pathways' && styles.navTextActive]}>
+                {isNepali ? 'मार्ग' : 'Pathways'}
+              </Text>
+            </Pressable>
+            <Pressable onPress={() => navigate('blogs')} style={styles.navTab}>
+              <Ionicons name="book" size={24} color={currentScreen === 'blogs' ? '#2E7D32' : '#7F8C8D'} />
+              <Text style={[styles.navText, currentScreen === 'blogs' && styles.navTextActive]}>
+                {isNepali ? 'ब्लग' : 'Blogs'}
+              </Text>
             </Pressable>
             <Pressable onPress={() => navigate('servers')} style={styles.navTab}>
               <Ionicons name="people" size={24} color={currentScreen === 'servers' ? '#2E7D32' : '#7F8C8D'} />
-              <Text style={[styles.navText, currentScreen === 'servers' && styles.navTextActive]}>Servers</Text>
+              <Text style={[styles.navText, currentScreen === 'servers' && styles.navTextActive]}>
+                {isNepali ? 'समूह' : 'Servers'}
+              </Text>
             </Pressable>
           </View>
         )}

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 export type Language = 'nepali' | 'english';
-export type Screen = 'home' | 'lesson' | 'servers';
+export type Screen = 'home' | 'lesson' | 'servers' | 'pathways' | 'blogs';
 
 interface AppState {
   language: Language;

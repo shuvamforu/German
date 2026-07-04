@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "DeutschSathi - A1 Exam Prep",
-    "slug": "DeutschSathi",
+    "name": "SuvaGerman - Exam Prep",
+    "slug": "SuvaGerman",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,10 +10,10 @@
     "primaryColor": "#2E7D32",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.nepal.deutschsathi"
+      "bundleIdentifier": "com.nepal.suvagerman"
     },
     "android": {
-      "package": "com.nepal.deutschsathi",
+      "package": "com.nepal.suvagerman",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
