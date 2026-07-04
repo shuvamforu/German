@@ -1,0 +1,51 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient (Himalayan Blue to White) -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E0F7FA" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+
+    <!-- Mountain Gradient -->
+    <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4DD0E1" />
+      <stop offset="100%" stop-color="#00BCD4" />
+    </linearGradient>
+
+    <!-- Drop Shadow for Depth -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+
+  <!-- Outer Circle (German Flag Colors: Black, Red, Gold) -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#222222" stroke-width="12" />
+  <circle cx="256" cy="256" r="160" fill="none" stroke="#E53935" stroke-width="12" />
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#FFC107" stroke-width="12" />
+
+  <!-- Inner Content Group -->
+  <g filter="url(#shadow)">
+    <!-- Base Mountain (Himalayas) -->
+    <path d="M 120 340 L 256 140 L 392 340 Z" fill="url(#mountainGrad)" />
+    <!-- Secondary Mountain -->
+    <path d="M 90 340 L 180 200 L 270 340 Z" fill="#81D4FA" opacity="0.9" />
+    <!-- Snow Caps -->
+    <path d="M 256 140 L 220 190 L 245 200 L 256 185 L 275 210 L 292 190 Z" fill="#FFFFFF" />
+    <path d="M 180 200 L 155 240 L 175 250 L 180 235 L 195 245 L 205 240 Z" fill="#FFFFFF" />
+
+    <!-- A Book representing Learning -->
+    <path d="M 256 320 C 220 300, 160 300, 140 320 L 140 380 C 160 360, 220 360, 256 380 C 292 360, 352 360, 372 380 L 372 320 C 352 300, 292 300, 256 320 Z" fill="#FFFFFF" stroke="#0097A7" stroke-width="8" stroke-linejoin="round" />
+    <!-- Pages in the book -->
+    <line x1="256" y1="325" x2="256" y2="375" stroke="#0097A7" stroke-width="8" stroke-linecap="round" />
+  </g>
+
+  <!-- Sparkles for Gamification/Dopamine -->
+  <g fill="#FFCA28">
+    <path d="M 370 120 Q 380 130 390 120 Q 380 110 370 120 Z" />
+    <path d="M 140 180 Q 150 190 160 180 Q 150 170 140 180 Z" />
+    <path d="M 400 240 Q 405 245 410 240 Q 405 235 400 240 Z" />
+  </g>
+</svg>
