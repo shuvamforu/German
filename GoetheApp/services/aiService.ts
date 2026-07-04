@@ -12,9 +12,6 @@ export const evaluateWithAI = async (
   userAnswer: string,
   language: Language
 ): Promise<AIEvaluationResult> => {
-  // Simulate network delay for AI evaluation
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
   const isNepali = language === 'nepali';
   let maxScore = 10;
   let score = Math.floor(Math.random() * (maxScore - 4)) + 4; // Mock score between 4 and 10
