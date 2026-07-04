@@ -24,7 +24,7 @@ export const LanguageSwitcher: React.FC = () => {
   });
 
   return (
-    <Pressable onPress={toggleLanguage} style={styles.container}>
+    <Pressable testID="language-switcher" onPress={toggleLanguage} style={styles.container}>
       <View style={styles.switchBackground}>
         <Animated.View style={[styles.circle, animatedStyle]} />
         <View style={styles.textContainer}>
