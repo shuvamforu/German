@@ -28,7 +28,7 @@ export const HomeScreen: React.FC = () => {
 
       <View style={styles.content}>
         <Text style={styles.title}>
-          {isNepali ? 'Goethe A1 तयारी' : 'Goethe A1 Prep'}
+          {isNepali ? 'German A1 तयारी' : 'German A1 Prep'}
         </Text>
 
         <View style={styles.progressContainer}>

@@ -1,19 +1,19 @@
 {
   "expo": {
-    "name": "GoetheApp - A1 Exam Prep",
-    "slug": "GoetheApp",
+    "name": "DeutschSathi - A1 Exam Prep",
+    "slug": "DeutschSathi",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "description": "Goethe A1 exam prep with gamification and instant Nepali translations.",
+    "description": "German A1 exam prep with gamification and instant Nepali translations.",
     "primaryColor": "#2E7D32",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.nepal.goetheapp"
+      "bundleIdentifier": "com.nepal.deutschsathi"
     },
     "android": {
-      "package": "com.nepal.goetheapp",
+      "package": "com.nepal.deutschsathi",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
