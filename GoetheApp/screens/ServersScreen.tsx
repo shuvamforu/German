@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { StyleSheet, Text, View, FlatList, Pressable, Image, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
@@ -26,6 +26,18 @@ export const ServersScreen: React.FC = () => {
   const openZoom = () => {
     Linking.openURL('zoomus://');
   };
+
+  const renderMessageItem = useCallback(({ item }: { item: { id: string; sender: string; text: string; } }) => (
+    <View style={styles.messageItem}>
+      <View style={styles.avatar}>
+        <Ionicons name="person" size={20} color="white" />
+      </View>
+      <View style={styles.messageContent}>
+        <Text style={styles.messageSender}>{item.sender}</Text>
+        <Text style={styles.messageText}>{item.text}</Text>
+      </View>
+    </View>
+  ), []);
 
   return (
     <View style={styles.container}>
@@ -61,17 +73,7 @@ export const ServersScreen: React.FC = () => {
         <FlatList
           data={mockMessages}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.messageItem}>
-              <View style={styles.avatar}>
-                <Ionicons name="person" size={20} color="white" />
-              </View>
-              <View style={styles.messageContent}>
-                <Text style={styles.messageSender}>{item.sender}</Text>
-                <Text style={styles.messageText}>{item.text}</Text>
-              </View>
-            </View>
-          )}
+          renderItem={renderMessageItem}
           contentContainerStyle={styles.chatList}
         />
 
