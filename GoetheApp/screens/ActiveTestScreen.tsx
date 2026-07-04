@@ -6,11 +6,11 @@ import { mockModelSets, TeilType } from '../data/mockTests';
 import { evaluateWithAI, AIEvaluationResult } from '../services/aiService';
 
 export const ActiveTestScreen: React.FC = () => {
-  const { language, navigate } = useAppStore();
+  const { language, navigate, activeTestId } = useAppStore();
   const isNepali = language === 'nepali';
 
-  // Hardcode test ID 0 for the mock
-  const activeSet = mockModelSets[0];
+  // Get active test from store
+  const activeSet = mockModelSets.find((set) => set.id === activeTestId) || mockModelSets[0];
   const [activeTeilIndex, setActiveTeilIndex] = useState(0);
   const activeTeil = activeSet.teile[activeTeilIndex];
 

@@ -5,11 +5,11 @@ import { useAppStore } from '../store/useAppStore';
 import { mockModelSets, ModelSet } from '../data/mockTests';
 
 export const ModelSetsScreen: React.FC = () => {
-  const { language, navigate } = useAppStore();
+  const { language, navigate, setActiveTestId } = useAppStore();
   const isNepali = language === 'nepali';
 
   const startTest = (setId: string) => {
-    // In a real app we would set the active test ID in the store
+    setActiveTestId(setId);
     navigate('activetest');
   };
 
