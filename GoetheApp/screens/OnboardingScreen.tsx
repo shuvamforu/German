@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Pressable, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Pressable, ScrollView, Dimensions, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
 
+type IconName = React.ComponentProps<typeof Ionicons>['name'];
+
+interface OnboardingSlide {
+  id: string;
+  title: string;
+  nepaliTitle: string;
+  description: string;
+  nepaliDescription: string;
+  icon: IconName;
+  color: string;
+  iconColor: string;
+}
+
 const { width } = Dimensions.get('window');
 
-const onboardingSlides = [
+const onboardingSlides: OnboardingSlide[] = [
   {
     id: '1',
     title: 'Welcome to SuvaGerman',
@@ -63,7 +76,7 @@ export const OnboardingScreen: React.FC = () => {
   const isNepali = language === 'nepali';
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleScroll = (event: any) => {
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const slideIndex = Math.round(event.nativeEvent.contentOffset.x / width);
     setCurrentIndex(slideIndex);
   };
@@ -80,7 +93,7 @@ export const OnboardingScreen: React.FC = () => {
         {onboardingSlides.map((slide) => (
           <View key={slide.id} style={[styles.slide, { backgroundColor: slide.color }]}>
             <View style={styles.iconContainer}>
-              <Ionicons name={slide.icon as any} size={100} color={slide.iconColor} />
+              <Ionicons name={slide.icon} size={100} color={slide.iconColor} />
             </View>
             <View style={styles.textContainer}>
               <Text style={styles.title}>
