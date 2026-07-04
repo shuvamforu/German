@@ -20,11 +20,11 @@ export const ServersScreen: React.FC = () => {
   const isNepali = language === 'nepali';
 
   const openWhatsApp = () => {
-    Linking.openURL('https://wa.me/9779800000000');
+    Linking.openURL('https://wa.me/9779800000000').catch(err => console.error("An error occurred", err));
   };
 
   const openZoom = () => {
-    Linking.openURL('zoomus://');
+    Linking.openURL('zoomus://').catch(err => console.error("An error occurred", err));
   };
 
   return (
