@@ -9,6 +9,7 @@ import { PathwaysScreen } from './screens/PathwaysScreen';
 import { BlogsScreen } from './screens/BlogsScreen';
 import { ModelSetsScreen } from './screens/ModelSetsScreen';
 import { ActiveTestScreen } from './screens/ActiveTestScreen';
+import { OnboardingScreen } from './screens/OnboardingScreen';
 import { useAppStore } from './store/useAppStore';
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
     <GestureHandlerRootView style={styles.container}>
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="dark-content" />
+        {currentScreen === 'onboarding' && <OnboardingScreen />}
         {currentScreen === 'home' && <HomeScreen />}
         {currentScreen === 'lesson' && <LessonScreen />}
         {currentScreen === 'servers' && <ServersScreen />}
@@ -28,7 +30,7 @@ export default function App() {
         {currentScreen === 'activetest' && <ActiveTestScreen />}
 
         {/* Simple Bottom Navigation */}
-        {currentScreen !== 'lesson' && currentScreen !== 'activetest' && (
+        {currentScreen !== 'onboarding' && currentScreen !== 'lesson' && currentScreen !== 'activetest' && (
           <View style={styles.bottomNav}>
             <Pressable onPress={() => navigate('home')} style={styles.navTab}>
               <Ionicons name="home" size={24} color={currentScreen === 'home' ? '#2E7D32' : '#7F8C8D'} />
