@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Pressable, TextInput, ScrollView, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Pressable, TextInput, ScrollView, ActivityIndicator, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
 import { mockModelSets, TeilType } from '../data/mockTests';
@@ -38,9 +38,18 @@ export const ActiveTestScreen: React.FC = () => {
 
   const handleEvaluate = async () => {
     setIsEvaluating(true);
-    const result = await evaluateWithAI(activeTeil.type, userAnswer, language);
-    setEvaluationResult(result);
-    setIsEvaluating(false);
+    try {
+      const result = await evaluateWithAI(activeTeil.type, userAnswer, language);
+      setEvaluationResult(result);
+    } catch (error) {
+      console.error('Error during AI evaluation:', error);
+      Alert.alert(
+        isNepali ? 'त्रुटि' : 'Error',
+        isNepali ? 'मूल्याङ्कन विफल भयो। कृपया फेरि प्रयास गर्नुहोस्।' : 'Evaluation failed. Please try again.'
+      );
+    } finally {
+      setIsEvaluating(false);
+    }
   };
 
   const formatTime = (seconds: number) => {
