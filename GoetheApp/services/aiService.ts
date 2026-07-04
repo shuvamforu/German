@@ -7,7 +7,7 @@ export interface AIEvaluationResult {
   feedback: string;
 }
 
-export const evaluateWithAI = async (
+const mockEvaluateWithAI = async (
   teilType: TeilType,
   userAnswer: string,
   language: Language
@@ -60,4 +60,14 @@ export const evaluateWithAI = async (
     maxScore,
     feedback,
   };
+};
+
+export const evaluateWithAI = async (
+  teilType: TeilType,
+  userAnswer: string,
+  language: Language
+): Promise<AIEvaluationResult> => {
+  // TODO: Replace with real API call (e.g., OpenAI or Claude)
+  // Requires backend integration, API keys, and handling real responses.
+  return mockEvaluateWithAI(teilType, userAnswer, language);
 };
