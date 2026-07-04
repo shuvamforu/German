@@ -2,13 +2,19 @@ import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useAppStore } from '../store/useAppStore';
+import { useShallow } from 'zustand/react/shallow';
 
 const SWITCH_WIDTH = 120;
 const SWITCH_HEIGHT = 40;
 const CIRCLE_SIZE = 34;
 
 export const LanguageSwitcher: React.FC = () => {
-  const { language, toggleLanguage } = useAppStore();
+  const { language, toggleLanguage } = useAppStore(
+    useShallow((state) => ({
+      language: state.language,
+      toggleLanguage: state.toggleLanguage,
+    }))
+  );
   const isNepali = language === 'nepali';
 
   const animatedStyle = useAnimatedStyle(() => {

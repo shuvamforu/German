@@ -3,9 +3,15 @@ import { StyleSheet, Text, View, FlatList, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
 import { mockModelSets, ModelSet } from '../data/mockTests';
+import { useShallow } from 'zustand/react/shallow';
 
 export const ModelSetsScreen: React.FC = () => {
-  const { language, navigate } = useAppStore();
+  const { language, navigate } = useAppStore(
+    useShallow((state) => ({
+      language: state.language,
+      navigate: state.navigate,
+    }))
+  );
   const isNepali = language === 'nepali';
 
   const startTest = (setId: string) => {

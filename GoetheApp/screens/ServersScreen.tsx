@@ -15,7 +15,7 @@ const mockMessages = [
 ];
 
 export const ServersScreen: React.FC = () => {
-  const { language } = useAppStore();
+  const language = useAppStore((state) => state.language);
   const [activeServer, setActiveServer] = useState(mockServers[0].id);
   const isNepali = language === 'nepali';
 

@@ -3,9 +3,17 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
+import { useShallow } from 'zustand/react/shallow';
 
 export const HomeScreen: React.FC = () => {
-  const { xp, streak, navigate, language } = useAppStore();
+  const { xp, streak, navigate, language } = useAppStore(
+    useShallow((state) => ({
+      xp: state.xp,
+      streak: state.streak,
+      navigate: state.navigate,
+      language: state.language,
+    }))
+  );
   const isNepali = language === 'nepali';
 
   // Gamification logic

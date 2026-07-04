@@ -4,9 +4,15 @@ import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
 import { mockModelSets, TeilType } from '../data/mockTests';
 import { evaluateWithAI, AIEvaluationResult } from '../services/aiService';
+import { useShallow } from 'zustand/react/shallow';
 
 export const ActiveTestScreen: React.FC = () => {
-  const { language, navigate } = useAppStore();
+  const { language, navigate } = useAppStore(
+    useShallow((state) => ({
+      language: state.language,
+      navigate: state.navigate,
+    }))
+  );
   const isNepali = language === 'nepali';
 
   // Hardcode test ID 0 for the mock
