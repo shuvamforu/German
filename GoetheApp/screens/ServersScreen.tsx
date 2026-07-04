@@ -4,9 +4,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
 
 const mockServers = [
-  { id: '1', name: 'Kathmandu German Inst.', initials: 'KGI', color: '#3498DB' },
-  { id: '2', name: 'Everest Language Ctr.', initials: 'ELC', color: '#E67E22' },
-  { id: '3', name: 'Lumbini Study Abroad', initials: 'LSA', color: '#9B59B6' },
+  { id: '1', name: 'Kathmandu German Inst.', initials: 'KGI', color: '#3498DB', whatsappNumber: '9779800000001', zoomLink: 'zoomus://' },
+  { id: '2', name: 'Everest Language Ctr.', initials: 'ELC', color: '#E67E22', whatsappNumber: '9779800000002', zoomLink: 'zoomus://' },
+  { id: '3', name: 'Lumbini Study Abroad', initials: 'LSA', color: '#9B59B6', whatsappNumber: '9779800000003', zoomLink: 'zoomus://' },
 ];
 
 const mockMessages = [
@@ -19,12 +19,18 @@ export const ServersScreen: React.FC = () => {
   const [activeServer, setActiveServer] = useState(mockServers[0].id);
   const isNepali = language === 'nepali';
 
+  const activeServerData = mockServers.find(s => s.id === activeServer);
+
   const openWhatsApp = () => {
-    Linking.openURL('https://wa.me/9779800000000');
+    if (activeServerData?.whatsappNumber) {
+      Linking.openURL(`https://wa.me/${activeServerData.whatsappNumber}`);
+    }
   };
 
   const openZoom = () => {
-    Linking.openURL('zoomus://');
+    if (activeServerData?.zoomLink) {
+      Linking.openURL(activeServerData.zoomLink);
+    }
   };
 
   return (
@@ -46,7 +52,7 @@ export const ServersScreen: React.FC = () => {
       <View style={styles.mainArea}>
         <View style={styles.header}>
           <Text style={styles.headerText}>
-            {mockServers.find(s => s.id === activeServer)?.name}
+            {activeServerData?.name}
           </Text>
           <View style={styles.actionButtons}>
             <Pressable onPress={openWhatsApp} style={styles.iconBtn}>
