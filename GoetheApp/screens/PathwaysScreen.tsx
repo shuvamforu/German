@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { useAppStore } from '../store/useAppStore';
 import { mockPathways, Pathway } from '../data/mockPathways';
@@ -7,7 +7,7 @@ export const PathwaysScreen: React.FC = () => {
   const { language } = useAppStore();
   const isNepali = language === 'nepali';
 
-  const renderPathwayItem = ({ item }: { item: Pathway }) => (
+  const renderPathwayItem = useCallback(({ item }: { item: Pathway }) => (
     <View style={styles.card}>
       <View style={styles.levelBadge}>
         <Text style={styles.levelText}>{item.level}</Text>
@@ -23,7 +23,7 @@ export const PathwaysScreen: React.FC = () => {
         </Text>
       </View>
     </View>
-  );
+  ), [isNepali]);
 
   return (
     <View style={styles.container}>
