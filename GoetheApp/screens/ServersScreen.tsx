@@ -9,6 +9,11 @@ const mockServers = [
   { id: '3', name: 'Lumbini Study Abroad', initials: 'LSA', color: '#9B59B6' },
 ];
 
+const mockServersMap = mockServers.reduce((acc, server) => {
+  acc[server.id] = server;
+  return acc;
+}, {} as Record<string, typeof mockServers[0]>);
+
 const mockMessages = [
   { id: '1', sender: 'Admin', text: 'Welcome to the A1 study group! Tomorrow we have a Zoom meeting.' },
   { id: '2', sender: 'Student', text: 'Thank you! What time is the class?' },
@@ -46,7 +51,7 @@ export const ServersScreen: React.FC = () => {
       <View style={styles.mainArea}>
         <View style={styles.header}>
           <Text style={styles.headerText}>
-            {mockServers.find(s => s.id === activeServer)?.name}
+            {mockServersMap[activeServer]?.name}
           </Text>
           <View style={styles.actionButtons}>
             <Pressable onPress={openWhatsApp} style={styles.iconBtn}>
