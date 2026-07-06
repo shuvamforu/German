@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable, DimensionValue } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
@@ -10,7 +10,7 @@ export const HomeScreen: React.FC = () => {
 
   // Gamification logic
   const currentLevelXP = xp % 100;
-  const progressPercentage = `${currentLevelXP}%`;
+  const progressPercentage: DimensionValue = `${currentLevelXP}%`;
 
   return (
     <View style={styles.container}>
@@ -36,7 +36,7 @@ export const HomeScreen: React.FC = () => {
             {isNepali ? 'तपाईंको प्रगति' : 'Your Progress'}
           </Text>
           <View style={styles.progressBarBackground}>
-            <View style={[styles.progressBarFill, { width: progressPercentage as any }]} />
+            <View style={[styles.progressBarFill, { width: progressPercentage }]} />
           </View>
           <Text style={styles.progressText}>{currentLevelXP} / 100 XP to next level</Text>
         </View>
