@@ -5,6 +5,8 @@ import { useAppStore } from '../store/useAppStore';
 import { mockModelSets, TeilType } from '../data/mockTests';
 import { evaluateWithAI, AIEvaluationResult } from '../services/aiService';
 
+const SECONDS_IN_MINUTE = 60;
+
 export const ActiveTestScreen: React.FC = () => {
   const { language, navigate, activeTestId } = useAppStore();
   const isNepali = language === 'nepali';
@@ -14,7 +16,7 @@ export const ActiveTestScreen: React.FC = () => {
   const [activeTeilIndex, setActiveTeilIndex] = useState(0);
   const activeTeil = activeSet.teile[activeTeilIndex];
 
-  const [timeLeft, setTimeLeft] = useState(activeTeil.timeLimitMinutes * 60);
+  const [timeLeft, setTimeLeft] = useState(activeTeil.timeLimitMinutes * SECONDS_IN_MINUTE);
   const [userAnswer, setUserAnswer] = useState('');
 
   // AI Evaluation State
@@ -24,7 +26,7 @@ export const ActiveTestScreen: React.FC = () => {
 
   // Timer effect
   useEffect(() => {
-    setTimeLeft(activeTeil.timeLimitMinutes * 60);
+    setTimeLeft(activeTeil.timeLimitMinutes * SECONDS_IN_MINUTE);
     setUserAnswer('');
     setEvaluationResult(null);
     setShowSolution(false);
@@ -53,8 +55,8 @@ export const ActiveTestScreen: React.FC = () => {
   };
 
   const formatTime = (seconds: number) => {
-    const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-    const s = (seconds % 60).toString().padStart(2, '0');
+    const m = Math.floor(seconds / SECONDS_IN_MINUTE).toString().padStart(2, '0');
+    const s = (seconds % SECONDS_IN_MINUTE).toString().padStart(2, '0');
     return `${m}:${s}`;
   };
 
