@@ -94,6 +94,7 @@ export const ActiveTestScreen: React.FC = () => {
           style={styles.textInput}
           multiline
           numberOfLines={6}
+          maxLength={2000}
           placeholder={isNepali ? 'यहाँ टाइप गर्नुहोस्...' : 'Type here...'}
           value={userAnswer}
           onChangeText={setUserAnswer}
